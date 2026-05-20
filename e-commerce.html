@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MG Blueprint | E-Commerce Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #94a3b8;
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover {
+      color: #22d3ee;
+    }
+    /* Cart notification */
+    #cartNotification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(34, 211, 238, 0.9);
+      color: #0f172a;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      z-index: 1000;
+      transform: translateX(200%);
+      transition: transform 0.3s ease-out;
+    }
+    #cartNotification.show {
+      transform: translateX(0);
+    }
+    /* Cart count badge */
+    #cartCount {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #22d3ee;
+      color: #0f172a;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+  <!-- Header with cart at top, back link at bottom -->
+  <header class="max-w-7xl mx-auto px-6 py-6 border-b border-slate-800">
+    <div class="flex justify-between items-center mb-4">
+      <!-- Logo and Cart Icon (Top Row) -->
+      <a href="index.html" class="text-2xl font-bold tracking-wide">
+        <span class="text-white">MG</span><span class="text-blue-500">Blueprint</span>
+      </a>
+
+      <!-- Cart Icon (Top Right) -->
+      <button id="cartButton" class="relative p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span id="cartCount" class="hidden">0</span>
+      </button>
+    </div>
+
+    <!-- Back to Home Link (Bottom of Header) -->
+    <a href="index.html" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+      </svg>
+      Back to Home
+    </a>
+  </header>
+
+  <!-- Cart Notification -->
+  <div id="cartNotification"></div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-6 py-10">
+    <h1 class="text-4xl font-bold text-cyan-400 mb-4">E-Commerce Demo</h1>
+    <p class="text-slate-300 mb-8">
+      A modern online store with product listings, cart system, and clean UI design.
+    </p>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Product Card 1: Premium Headphones -->
+      <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" alt="Premium Headphones" class="w-full h-48 object-cover rounded-lg mb-4">
+        <h3 class="font-semibold mb-2">Premium Headphones</h3>
+        <p class="text-slate-400 text-sm mb-2">Noise-cancelling wireless headphones</p>
+        <p class="text-cyan-400 font-bold">Mwk 35,000</p>
+        <button onclick="addToCart('Premium Headphones', 35,000)" class="w-full mt-4 bg-blue-600 hover:bg-blue-700 py-2 rounded-lg transition">Add to Cart</button>
+      </div>
+
+      <!-- Product Card 2: Smart Watch -->
+      <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="Smart Watch" class="w-full h-48 object-cover rounded-lg mb-4">
+        <h3 class="font-semibold mb-2">Smart Watch</h3>
+        <p class="text-slate-400 text-sm mb-2">Fitness tracking and notifications</p>
+        <p class="text-cyan-400 font-bold">Mwk45,000</p>
+        <button onclick="addToCart('Smart Watch', 45,000)" class="w-full mt-4 bg-blue-600 hover:bg-blue-700 py-2 rounded-lg transition">Add to Cart</button>
+      </div>
+
+      <!-- Product Card 3: Wireless Speaker -->
+      <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+        <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400" alt="Wireless Speaker" class="w-full h-48 object-cover rounded-lg mb-4">
+        <h3 class="font-semibold mb-2">Wireless Speaker</h3>
+        <p class="text-slate-400 text-sm mb-2">Portable Bluetooth speaker</p>
+        <p class="text-cyan-400 font-bold">Mwk80,000</p>
+        <button onclick="addToCart('Wireless Speaker', 80,000)" class="w-full mt-4 bg-blue-600 hover:bg-blue-700 py-2 rounded-lg transition">Add to Cart</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Modal -->
+  <div id="cartModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+    <div class="bg-slate-900 p-6 rounded-2xl max-w-md w-full mx-4">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-bold">Your Cart</h2>
+        <button onclick="closeCart()" class="text-slate-400 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="cartItems" class="space-y-4 max-h-60 overflow-y-auto"></div>
+      <div class="mt-4 pt-4 border-t border-slate-700 flex justify-between items-center">
+        <p class="font-semibold">Total: $<span id="cartTotal">0.00</span></p>
+        <button onclick="checkout()" class="bg-cyan-400 text-slate-900 px-4 py-2 rounded-lg font-medium hover:bg-cyan-300 transition">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-slate-800 mt-20 py-8 text-center text-slate-400 text-sm">
+    <p>© 2026 MG Blueprint. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Cart functionality
+    let cart = [];
+    const cartButton = document.getElementById('cartButton');
+    const cartCount = document.getElementById('cartCount');
+    const cartModal = document.getElementById('cartModal');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const cartNotification = document.getElementById('cartNotification');
+
+    // Add to cart function
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCart();
+
+      // Show notification
+      cartNotification.textContent = `${name} added to cart!`;
+      cartNotification.classList.add('show');
+      setTimeout(() => {
+        cartNotification.classList.remove('show');
+      }, 2000);
+    }
+
+    // Update cart UI
+    function updateCart() {
+      cartCount.textContent = cart.length;
+      cartCount.classList.remove('hidden');
+      if (cart.length === 0) {
+        cartCount.classList.add('hidden');
+      }
+
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      cartTotal.textContent = total.toFixed(2);
+
+      cartItems.innerHTML = cart.map(item => `
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-medium">${item.name}</p>
+            <p class="text-sm text-slate-400">$${item.price.toFixed(2)}</p>
+          </div>
+          <button onclick="removeFromCart('${item.name}')" class="text-red-400 hover:text-red-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9 1a8 8 0 100 16A8 8 0 009 1zM4.93 8.4a.75.75 0 01.75-.75h8.54a.75.75 0 010 1.5H5.68a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // Remove from cart
+    function removeFromCart(name) {
+      cart = cart.filter(item => item.name !== name);
+      updateCart();
+    }
+
+    // Open cart modal
+    cartButton.addEventListener('click', () => {
+      cartModal.classList.remove('hidden');
+      cartModal.classList.add('flex');
+    });
+
+    // Close cart modal
+    function closeCart() {
+      cartModal.classList.add('hidden');
+      cartModal.classList.remove('flex');
+    }
+
+    // Checkout function
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      alert(`Checkout successful! Total: $${cartTotal.textContent}`);
+      cart = [];
+      updateCart();
+      closeCart();
+    }
+
+    // Close modal when clicking outside
+    cartModal.addEventListener('click', (e) => {
+      if (e.target === cartModal) {
+        closeCart();
+      }
+    });
+  </script>
+</body>
+</html>

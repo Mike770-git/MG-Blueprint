@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MG Blueprint</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn { animation: fadeIn 3s ease-out; }
+    body { font-family: 'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-slate-950 text-white selection:bg-cyan-500 selection:text-black">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold tracking-wide">
+        <span class="text-white">MG</span><span class="text-blue-500">Blueprint</span>
+      </h1>
+      <div class="hidden md:flex items-center space-x-8 text-sm">
+        <a href="#about" class="hover:text-cyan-400 transition">About</a>
+        <a href="#projects" class="hover:text-cyan-400 transition">Projects</a>
+        <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
+      </div>
+      <div class="md:hidden">
+        <button onclick="toggleMenu()" class="text-white text-xl">☰</button>
+      </div>
+    </nav>
+    <div id="mobile-menu" class="hidden flex-col bg-slate-900 px-6 py-4 space-y-4 md:hidden">
+      <a href="#about" class="block text-slate-300">About</a>
+      <a href="#projects" class="block text-slate-300">Projects</a>
+      <a href="#contact" class="block text-slate-300">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-6 py-28 grid md:grid-cols-2 gap-12 items-center">
+    <div class="animate-fadeIn text-center md:text-left">
+      <p class="text-cyan-400 mb-4 tracking-wide">MG Blueprint</p>
+      <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+        Building Powerful Web & Mobile Experiences
+      </h2>
+      <p class="text-slate-300 text-lg mb-8">MG Blueprint ~ Building Ideas into Reality.</p>
+      <div class="flex gap-4">
+        <a href="#projects">
+          <button class="bg-blue-600 hover:bg-blue-700 hover:scale-105 transition px-6 py-3 rounded-2xl font-medium">
+            View Projects
+          </button>
+        </a>
+        <a href="https://wa.me/265891135100" target="_blank" class="border border-slate-600 hover:border-cyan-400 px-6 py-3 rounded-2xl font-small inline-block">
+          Hire Me
+        </a>
+      </div>
+    </div>
+    <div class="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-3xl p-8 border border-slate-800 shadow-2xl hover:scale-105 transition">
+      <div class="space-y-4">
+        <div class="h-4 bg-slate-700 rounded w-3/4"></div>
+        <div class="h-4 bg-slate-700 rounded w-full"></div>
+        <div class="h-4 bg-slate-700 rounded w-5/6"></div>
+        <div class="grid grid-cols-2 gap-4 mt-8">
+          <div class="h-28 bg-slate-800 rounded-2xl"></div>
+          <div class="h-28 bg-slate-800 rounded-2xl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="max-w-7xl mx-auto px-6 py-20">
+    <h3 class="text-3xl font-bold mb-6 text-center">About Me</h3>
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-slate-300 mb-6">
+        MG Blueprint is a Tech Company that Develops websites, mobile applications, Admin Dashboards, Softwares and many more. We focus on clean User Interface, powerful functionality, and impactful digital experiences for our clients.
+      </p>
+      <p class="text-slate-300 mb-6">
+        MG Blueprint understands both the technical and business side of digital products, allowing us to create solutions that not only work but also deliver value.
+      </p>
+      <p class="text-slate-300 mb-6">
+        We are currently open to working with clients, startups, and businesses looking to build impactful digital products.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="max-w-7xl mx-auto px-6 py-20">
+    <h3 class="text-3xl font-bold mb-10 text-center">Projects</h3>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <!-- Project 1: E-Commerce App -->
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:scale-105 hover:shadow-xl transition duration-300">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d" class="h-40 w-full object-cover rounded-xl mb-4" alt="E-Commerce App">
+        <h4 class="text-xl font-semibold mb-2">E-Commerce App</h4>
+        <p class="text-slate-400 text-sm mb-4">A modern online store with product listings, cart system, and clean UI design.</p>
+        <a href="e-commerce.html" class="w-full md:w-auto inline-flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-xl text-sm">
+          View Project <span>→</span>
+        </a>
+      </div>
+
+      <!-- Project 2: Dashboard System -->
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:scale-105 hover:shadow-xl transition duration-300">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" class="h-40 w-full object-cover rounded-xl mb-4" alt="Dashboard System">
+        <h4 class="text-xl font-semibold mb-2">Dashboard System</h4>
+        <p class="text-slate-400 text-sm mb-4">A responsive admin dashboard with analytics, charts, and user management.</p>
+        <a href="dashboard.html" class="w-full md:w-auto inline-flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-xl text-sm">
+          View Project <span>→</span>
+        </a>
+      </div>
+
+      <!-- Project 3: Booking App -->
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:scale-105 hover:shadow-xl transition duration-300">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" class="h-40 w-full object-cover rounded-xl mb-4" alt="Booking App">
+        <h4 class="text-xl font-semibold mb-2">Booking App</h4>
+        <p class="text-slate-400 text-sm mb-4">A mobile-friendly booking system for appointments and reservations.</p>
+        <a href="booking .html" class="w-full md:w-auto inline-flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-xl text-sm">
+          Book Now <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="max-w-7xl mx-auto px-6 py-20">
+    <h3 class="text-3xl font-bold mb-6 text-center">Contact Me</h3>
+    <p class="text-slate-400 text-center mb-10">Have a project in mind or want to work together? Feel free to reach out.</p>
+    <div class="text-center mt-6 text-slate-400 text-sm">
+      <p>Email: mikegondwe770@gmail.com</p>
+      <p>Location: Blantyre, Malawi</p>
+    </div>
+    <div class="max-w-xl mx-auto">
+      <form action="https://formspree.io/f/mjglezbr" method="POST" class="space-y-6">
+        <input type="text" name="name" placeholder="Your Name" class="w-full p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-cyan-400/20 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30 outline-none text-white placeholder-slate-400 transition duration-300" required>
+        <input type="email" name="email" placeholder="Your Email" class="w-full p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-cyan-400/20 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30 outline-none text-white placeholder-slate-400 transition duration-300" required>
+        <textarea name="message" rows="8" maxlength="1800" placeholder="Your Message" class="w-full p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-cyan-400/20 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30 outline-none text-white placeholder-slate-400 transition duration-300 resize-none overflow-y-auto" required></textarea>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 p-3 rounded-xl font-medium">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 mt-20">
+    <div class="max-w-7xl mx-auto px-6 py-8 text-center">
+      <h2 class="text-xl font-semibold mb-2">MG Blueprint</h2>
+      <p class="text-slate-400 text-sm mb-4">Building modern web and mobile applications with clean design and powerful functionality.</p>
+    </div>
+  </footer>
+  <footer class="mt-20 border-t border-slate-800 py-8 text-center text-slate-400 text-sm">
+    <p class="mb-4">© 2026 MG Blueprint. All rights reserved.</p>
+    <div class="flex justify-center gap-6 mb-4">
+      <a href="#" class="hover:text-cyan-400 transition">LinkedIn</a>
+      <a href="#" class="hover:text-cyan-400 transition">GitHub</a>
+      <a href="#" class="hover:text-cyan-400 transition">Instagram</a>
+    </div>
+    <p>Built by MG Blueprint 🚀</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobile-menu");
+      menu.classList.toggle("hidden");
+    }
+  </script>
+</body>
+</html>
